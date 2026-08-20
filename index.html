@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#000000">
+
+  <title>RK RAJA XWD PANEL</title>
+
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px;
+      min-height: 100vh;
+      background: #000;
+      color: #fff;
+      text-align: center;
+      font-family: "Courier New", monospace;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    h1 {
+      margin: 10px 0;
+      color: #ff00ff;
+      font-size: 30px;
+      text-shadow: 0 0 10px #ff00ff;
+    }
+
+    h2 {
+      margin: 0 0 25px;
+      font-size: 20px;
+    }
+
+    .page {
+      display: none;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    .menu-button {
+      display: block;
+      width: 90%;
+      margin: 15px auto;
+      padding: 14px 10px;
+      border: 2px solid #00ffff;
+      border-radius: 8px;
+      background: #00ffff;
+      color: #000;
+      font-size: 15px;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 0 12px #00ffff;
+      transition: 0.2s;
+    }
+
+    .menu-button:hover {
+      color: #000;
+      transform: scale(1.02);
+      box-shadow: 0 0 20px #00ffff;
+    }
+
+    .admin-button {
+      display: block;
+      width: 90%;
+      margin: 28px auto 15px;
+      padding: 14px 10px;
+      border-radius: 8px;
+      background: #ff00ff;
+      color: #000;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 0 15px #ff00ff;
+    }
+
+    .admin-button:hover {
+      color: #000;
+      box-shadow: 0 0 25px #ff00ff;
+    }
+
+    .panel {
+      width: 90%;
+      margin: 20px auto;
+      padding: 20px;
+      border: 2px solid #00ffff;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #00ffff;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      margin: 8px 0;
+      padding: 12px;
+      border: 1px solid #00ffff;
+      border-radius: 6px;
+      outline: none;
+      background: #111;
+      color: #fff;
+      font-family: inherit;
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .action-button {
+      width: 100%;
+      margin-top: 10px;
+      padding: 12px;
+      border: 0;
+      border-radius: 6px;
+      background: #00ffff;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .back-button {
+      display: block;
+      width: 90%;
+      margin: 25px auto 0;
+      padding: 12px;
+      border: 1px solid #00ffff;
+      border-radius: 6px;
+      background: #151515;
+      color: #00ffff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .note {
+      color: #aaa;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .result {
+      min-height: 22px;
+      margin-top: 15px;
+      color: #00ff88;
+      font-size: 13px;
+    }
+
+    footer {
+      margin-top: 40px;
+      color: #aaa;
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 500px) {
+      body {
+        padding: 15px 8px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      h2 {
+        font-size: 17px;
+      }
+
+      .menu-button,
+      .admin-button,
+      .panel,
+      .back-button {
+        width: 95%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container">
+
+    <!-- HOME PAGE -->
+    <section id="home" class="page">
+      <h1>RK RAJA XWD</h1>
+      <h2>(ALL OPTIONS)</h2>
+
+      <a class="menu-button" href="#convo-server">
+        ◄ 1 – CONVO SERVER ►
+      </a>
+
+      <a class="menu-button" href="#backup-convo">
+        ◄ 2 – BACKUP CONVO ►
+      </a>
+
+      <a class="menu-button" href="#post-server">
+        ◄ 3 – POST SERVER ►
+      </a>
+
+      <a class="menu-button" href="#backup-post">
+        ◄ 4 – BACKUP POST SERVER ►
+      </a>
+
+      <a class="menu-button" href="#token-check">
+        ◄ 5 – TOKEN CHECK VALIDITY ►
+      </a>
+
+      <a class="menu-button" href="#fetch-uid">
+        ◄ 6 – FETCH ALL UID WITH TOKEN ►
+      </a>
+
+      <a class="menu-button" href="#page-tokens">
+        ◄ 7 – FETCH PAGE TOKENS ►
+      </a>
+
+      <a class="menu-button" href="#group-locker">
+        ◄ 8 – GROUP NAME LOCKER ►
+      </a>
+
+      <a class="menu-button" href="#youtube">
+        ◄ 9 – YOUTUBE DOWNLOADER ►
+      </a>
+
+      <a class="menu-button" href="#instagram">
+        ◄ 10 – INSTAGRAM DOWNLOADER ►
+      </a>
+
+      <a class="menu-button" href="#facebook">
+        ◄ 11 – FACEBOOK DOWNLOADER ►
+      </a>
+
+      <a class="menu-button" href="#cookie-json">
+        ◄ 12 – COOKIE TO JSON ►
+      </a>
+
+      <a class="admin-button" href="#admin">
+        ⚙ ADMIN PANEL
+      </a>
+    </section>
+
+    <!-- CONVO SERVER -->
+    <section id="convo-server" class="page">
+      <div class="panel">
+        <h1>CONVO SERVER</h1>
+        <p class="note">Convo Server का data यहाँ भरें।</p>
+
+        <input type="text" placeholder="UID">
+        <input type="text" placeholder="Token">
+        <textarea placeholder="Message"></textarea>
+
+        <button class="action-button" onclick="showMessage('Convo Server form ready है।')">
+          SUBMIT
+        </button>
+
+        <p id="convoResult" class="result"></p>
+      </div>
+
+      <a class="back-button" href="#home">← वापस Home पर जाएँ</a>
+    </section>
+
+    <!-- BACKUP CONVO -->
+    <section id="backup-convo" class="page">
+      <div class="panel">
+        <h1>BACKUP CONVO</h1>
+        <p class="note">Backup Convo का data यहाँ भरें।</p>
+
+        <input type="text" placeholder="Backup ID">
+        <textarea placeholder="Backup details"></textarea>
+
+        <button class="action-button" onclick="showMessage('Backup Convo form ready है।')">
+          SUBMIT
+        </button>
+
+        <p class="result"></p>
+      </div>
+
+      <a class="back-button" href="#home">← वापस Home पर जाएँ</a>
+    </section>
+
+    <!-- POST SERVER -->
+    <section id="post-server" class="page">
+      <div class="panel">
+        <h1>POST SERVER</h1>
+        <p class="note">Post Server का data यहाँ भरें।</p>
+
+        <input id="postUid" type="text" placeholder="UID">
+        <input id="postToken" type="password" placeholder="Token">
+        <textarea id="postMessage" placeholder="Message लिखें"></textarea>
+
+        <button class="action-button" onclick="submitPost()">
+          POST करें
+        </button>
+
+        <p id="postResult" class="result"></p>
+      </div>
+
+      <a class="back-button" href="#home">← वापस Home पर जाएँ</a>
+    </section>
+
+    <!-- BACKUP POST -->
+    <section id="backup-post" class="page">
+      <div class="panel">
+        <h1>BACKUP POST SERVER</h1>
+        <p class="note">Backup Post का data यहाँ भरें।</p>
+
+        <input type="text" placeholder="UID">
+        <textarea placeholder="Post details"></textarea>
+
+        <button class="action-button" onclick="showMessage('Backup Post form ready है।')">
+          SUBMIT
+        </button>
+
+        <p class="result"></p>
+      </div>
+
+      <a class="back-button" href="#home">← वापस Home पर जाएँ</a>
+    </section>
+
+    <!-- TOKEN CHECK -->
+    <section id="token-check" class="page">
+      <div class="panel">
+        <h1>TOKEN CHECK</h1>
+
+        <input type="text" placeholder="UID">
+        <input type="password" placeholder="Token">
+
+        <button class="action-button" onclick="showMessage('Token check के लिए backend API जोड़ना होगा।')">
+          CHECK TOKEN
+        </button>
+
+        <p class="result"></p>
+      </div>
+
+      <a class="back-button" href="#home">← वापस Home पर जाएँ</a>
+    </section>
+
+    <!-- FETCH UID -->
+    <section id="fetch-uid" class="page">
+      <div class="panel">
+        <h1>FETCH ALL UID</h1>
+        <p class="note">Token डालकर UID fetch करें।</p>
+
+        <input type="password" placeholder="Token">
+
+        <button class="action-button" onclick="showMessage('UID fetch के लिए backend API जोड़ना होगा।')">
+          FETCH UID
+        </button>
+
+        <p class="result"></p>
+      </div>
+
+      <a class="back-button" href="#home">← वापस Home पर जाएँ</a>
+    </section>
+
+    <!-- PAGE TOKENS -->
+    <section id="page-tokens" class="page">
+      <div class="panel">
+        <h1>PAGE TOKENS</h1>
+
+        <input type="text" placeholder="Page ID">
+        <input type="password" placeholder="Token">
+
+        <button class="action-button" onclick="showMessage('Page token feature के लिए backend API जोड़ना होगा।')">
+          FETCH TOKENS
+        </button>
+
+        <p class="result"></p>
+      </div>
+
+      <a class="back-button" href="#home">← वापस Home पर जाएँ</a>
+    </section>
+
+    <!-- GROUP LOCKER -->
+    <section id="group-locker" class="page">
+      <div class="panel">
+        <h1>GROUP NAME LOCKER</h1>
+
+        <input type="text" placeholder="Group ID">
+        <input type="text" placeholder="Group name">
+
+        <button class="action-button" onclick="showMessage('Group locker के लिए backend API जोड़ना होगा।')">
+          LOCK NAME
+        </button>
+
+        <p class="result"></p>
+      </div>
+
+      <a class="back-button" href="#home">← वापस Home पर जाएँ</a>
+    </section>
+
+    <!-- DOWNLOADERS -->
+    <section id="youtube" class="page">
+      <div class="panel">
+        <h1>YOUTUBE DOWNLOADER</h1>
+        <input type="url" placeholder="YouTube URL">
+        <button class="action-button" onclick="showMessage('Downloader backend/API से connect करना होगा।')">
+          DOWNLOAD
+        </button>
+        <p class="result"></p>
+      </div>
+
+      <a class="back-button" href="#home">← वापस Home पर जाएँ</a>
+    </section>
+
+    <section id="instagram" class="page">
+      <div class="panel">
+        <h1>INSTAGRAM DOWNLOADER</h1>
+        <input type="url" placeholder="Instagram URL">
+        <button class="action-button" onclick="showMessage('Downloader backend/API से connect करना होगा।')">
+          DOWNLOAD
+        </button>
+        <p class="result"></p>
+      </div>
+
+      <a class="back-button" href="#home">← वापस Home पर जाएँ</a>
+    </section>
+
+    <section id="facebook" class="page">
+      <div class="panel">
+        <h1>FACEBOOK DOWNLOADER</h1>
+        <input type="url" placeholder="Facebook URL">
+        <button class="action-button" onclick="showMessage('Downloader backend/API से connect करना होगा।')">
+          DOWNLOAD
+        </button>
+        <p class="result"></p>
+      </div>
+
+      <a class="back-button" href="#home">← वापस Home पर जाएँ</a>
+    </section>
+
+    <!-- COOKIE JSON -->
+    <section id="cookie-json" class="page">
+      <div class="panel">
+        <h1>COOKIE TO JSON</h1>
+
+        <textarea id="cookieInput" placeholder="Cookie यहाँ paste करें"></textarea>
+
+        <button class="action-button" onclick="convertCookie()">
+          CONVERT TO JSON
+        </button>
+
+        <textarea id="jsonOutput" readonly placeholder="JSON result यहाँ आएगा"></textarea>
+      </div>
+
+      <a class="back-button" href="#home">← वापस Home पर जाएँ</a>
+    </section>
+
+    <!-- ADMIN -->
+    <section id="admin" class="page">
+      <div class="panel">
+        <h1>ADMIN PANEL</h1>
+        <p class="note">
+          Admin panel का login और database backend से connect करना होगा।
+        </p>
+
+        <input type="text" placeholder="Username">
+        <input type="password" placeholder="Password">
+
+        <button class="action-button" onclick="showMessage('Admin login के लिए backend authentication जोड़ना होगा।')">
+          LOGIN
+        </button>
+
+        <p class="result"></p>
+      </div>
+
+      <a class="back-button" href="#home">← वापस Home पर जाएँ</a>
+    </section>
+
+    <footer>
+      <p>© 2026 RK RAJA XWD</p>
+      <p>ALWAYS ON FIRE 🔥</p>
+    </footer>
+
+  </main>
+
+  <script>
+    function showPage() {
+      const pageId = window.location.hash.substring(1) || "home";
+
+      document.querySelectorAll(".page").forEach(page => {
+        page.classList.remove("active");
+      });
+
+      const selectedPage = document.getElementById(pageId);
+      const homePage = document.getElementById("home");
+
+      if (selectedPage) {
+        selectedPage.classList.add("active");
+      } else {
+        homePage.classList.add("active");
+      }
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
+
+    function showMessage(message) {
+      const activePage = document.querySelector(".page.active");
+      const result = activePage.querySelector(".result");
+
+      if (result) {
+        result.textContent = message;
+      }
+    }
+
+    function submitPost() {
+      const uid = document.getElementById("postUid").value.trim();
+      const token = document.getElementById("postToken").value.trim();
+      const message = document.getElementById("postMessage").value.trim();
+      const result = document.getElementById("postResult");
+
+      if (!uid || !token || !message) {
+        result.style.color = "#ff4444";
+        result.textContent = "UID, Token और Message भरना जरूरी है।";
+        return;
+      }
+
+      result.style.color = "#00ff88";
+      result.textContent =
+        "Form तैयार है। असली posting के लिए backend API connect करें।";
+    }
+
+    function convertCookie() {
+      const input = document.getElementById("cookieInput").value.trim();
+      const output = document.getElementById("jsonOutput");
+
+      if (!input) {
+        output.value = "पहले cookie paste करें।";
+        return;
+      }
+
+      const cookieObject = {};
+
+      input.split(";").forEach(item => {
+        const separator = item.indexOf("=");
+
+        if (separator !== -1) {
+          const key = item.slice(0, separator).trim();
+          const value = item.slice(separator + 1).trim();
+
+          if (key) {
+            cookieObject[key] = value;
+          }
+        }
+      });
+
+      output.value = JSON.stringify(cookieObject, null, 2);
+    }
+
+    window.addEventListener("hashchange", showPage);
+    window.addEventListener("load", showPage);
+  </script>
+</body>
+  </html>
